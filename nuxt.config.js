@@ -1,25 +1,26 @@
 const pkg = require('./package')
 const axios = require('axios');
 
-const tribes = require('./mocks/tribes.json');
-
 module.exports = {
   mode: 'universal',
   generate: {
     devtools: true,
-    routes: function() {
-      return axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
-        console.log('tribes: ', res.data);
-        routes = res.data.map(user => {
-          return {
-            route: `/tribes/${user.id}`,
-            payload: user
-          }
-        })
-        
-        return [{route: '/tribes', payload: tribes}, ...routes];
-      });
-    }
+    routes: async function() {
+      const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+
+      const users = response.data.map(user => ({
+        route: `/tribes/${user.id}`,
+        payload: user
+      }));
+
+      const tribes_response = await axios.get('https://tribe-mock.herokuapp.com/tribes');
+      const tribes = tribes_response.data;
+
+      console.log('USERS: ', users);
+      console.log('TRIBES: ', tribes);
+
+      return [{route: '/tribes', payload: tribes}, ...users];
+      }
   },
   /*
   ** Headers of the page

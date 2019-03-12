@@ -12,17 +12,24 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
-  asyncData(ctx) {
+  async asyncData(ctx) {
     console.log('ctx: ', ctx);
     if (ctx.payload) {
       console.log('tribes from payload: ', ctx.payload);
       return { tribes: ctx.payload }
     }
-    return import('../../mocks/tribes.json').then(tribes => {
-      console.log('tribes from import: ', tribes);
-      return { tribes }
-    })
+    console.log('axios request');
+    let res;
+    try {
+      res = await axios.get('https://tribe-mock.herokuapp.com/tribes');
+      console.log('response: ', res.data);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+    return { tribes: res.data };
   }
 }
 </script>
