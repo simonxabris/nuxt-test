@@ -10,7 +10,7 @@ module.exports = {
     routes: function() {
       return axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
         console.log('tribes: ', res.data);
-        return res.data.map(user => {
+        routes = res.data.map(user => {
           return {
             route: `/tribes/${user.id}`,
             payload: user
