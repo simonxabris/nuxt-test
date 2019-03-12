@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "first tribe",
+    "leaders": [
+      {
+        "id": "11",
+        "name": "Tribelead Álmos"
+      },
+      {
+        "id": "12",
+        "name": "Tribelead Előd"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "second tribe",
+    "leaders": [
+      {
+        "id": "21",
+        "name": "Tribelead Ond"
+      },
+      {
+        "id": "22",
+        "name": "Tribelead Kond"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "third tribe",
+    "leaders": [
+      {
+        "id": "11",
+        "name": "Tribelead Tas"
+      },
+      {
+        "id": "12",
+        "name": "Tribelead Huba"
+      }
+    ]
+  }
+]
